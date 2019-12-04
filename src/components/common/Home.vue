@@ -113,6 +113,7 @@
 				this.$router.push(key)
 			},
 			handleCommand() {
+				const self = this
 				logOut({
 					username: self.userName
 				}).then(response => {
