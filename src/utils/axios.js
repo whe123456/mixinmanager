@@ -1,6 +1,6 @@
 'use strict'
 import axios from 'axios'
-// axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true
 import qs from 'qs'
 
 axios.interceptors.request.use(config => {

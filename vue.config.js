@@ -4,6 +4,9 @@ function resolve (dir) {
 }
 
 module.exports = {
+	publicPath: './',
+	assetsDir: './',
+	productionSourceMap: false,
 	configureWebpack: config => {
 		config.resolve = {
 			extensions: ['.js', '.vue', '.json'],

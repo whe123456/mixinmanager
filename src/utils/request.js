@@ -19,7 +19,7 @@ service.interceptors.request.use(
 		} else {
 			data = config.data
 		}
-		data.test=1
+		// data.test=1
 		if (data === undefined || data === '') {
 			data = {}
 		}
