@@ -1,0 +1,1322 @@
+
+        <html xmlns:v="urn:schemas-microsoft-com:vml"
+        xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:w="urn:schemas-microsoft-com:office:word"
+        xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta http-equiv=Content-Type content="text/html;  
+        charset=utf-8">
+        <style type="text/css">
+            table  
+            {  
+                border-collapse: collapse;
+                border: none;  
+                width: 100%;  
+            }  
+            td  
+            {  
+                border: solid #CCC 1px;  
+            }  
+            .codestyle{
+                word-break: break-all;
+                background:silver;mso-highlight:silver;
+            }
+        </style>
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 11">
+        <meta name=Originator content="Microsoft Word 11">
+        <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+        <body><h1>1、全局说明</h1><div style="margin-left:20px;"><ul>
+<li>返回字段 </li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th>字段名</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>state</td>
+<td>错误码 1：成功 其他：失败</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>提示语</td>
+</tr>
+<tr>
+<td>data</td>
+<td>逻辑参数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>state 错误码</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th>错误码</th>
+<th>错误解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>接口成功</td>
+</tr>
+<tr>
+<td>999</td>
+<td>未登录或登录过期</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>失败</td>
+</tr>
+</tbody>
+</table></div><h1>2、修改记录</h1><div style="margin-left:20px;"><ul>
+<li>2019年</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th>日期</th>
+<th>修改人</th>
+<th>涉及接口</th>
+<th>修改内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11月28日</td>
+<td></td>
+<td>全部</td>
+<td>新增</td>
+</tr>
+</tbody>
+</table></div><h1>3、登录相关</h1><div style="margin-left:0px;"><h2>3.1、登录</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>登录</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/login.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>密码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": {
+      "username": "12154545",
+      "name": "吴系挂"
+    }
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>用户名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.2、退出</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>用户退出接口</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/logout.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户名</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": "1",
+    "mag": "成功",
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.3、修改密码</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>登录</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/changepass.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>密码</td>
+</tr>
+<tr>
+<td style="text-align: left;">new_password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>新密码</td>
+</tr>
+<tr>
+<td style="text-align: left;">re_new_password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>新密码确认</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>4、用户管理</h1><div style="margin-left:0px;"><h2>4.1、删除群组</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除群组</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/user/deletegroup.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">group_id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>群组id（多个以英文逗号隔开）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.2、群组列表</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>群组列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/user/grouplist.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">title</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>群标题筛选条件（为空则返回所有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">page</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>页码</td>
+</tr>
+<tr>
+<td style="text-align: left;">page_count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>每页的条数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+    "data": [
+     {
+      "all_no_speak": 0,
+      "create_by": 10881,
+      "delete_after_reading": 0,
+      "group_id": 17,
+      "max_member": 200,
+      "need_auth": 0,
+      "protected_mode": 0,
+      "head_url": "",
+      "title": "AlphaGo(汽车美容)、AlphaGo2号(汽车美容)、几"
+    }, {
+      "all_no_speak": 0,
+      "create_by": 10881,
+      "delete_after_reading": 0,
+      "group_id": 16,
+      "max_member": 200,
+      "need_auth": 0,
+      "protected_mode": 0,
+      "head_url": "",
+      "title": "6l几"
+    },
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.3、删除用户</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除用户</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/user/deleteuser.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">uid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户uid（多个用英文逗号分隔）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.4、群组创建</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>创建群组</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/user/create_group.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">title</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>群标题</td>
+</tr>
+<tr>
+<td style="text-align: left;">create_user</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>创建者uid</td>
+</tr>
+<tr>
+<td style="text-align: left;">uid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户uid(多个用户之间用英文逗号（,）分隔，至少三人，包含创建者)</td>
+</tr>
+<tr>
+<td style="text-align: left;">head_url</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>群图标</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.5、用户列表</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>用户列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/user/userlist.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">uuid</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>蜜信号模糊查询条件</td>
+</tr>
+<tr>
+<td style="text-align: left;">nick</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>昵称模糊查询条件</td>
+</tr>
+<tr>
+<td style="text-align: left;">phone</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>手机号模糊查询条件</td>
+</tr>
+<tr>
+<td style="text-align: left;">page</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>页码</td>
+</tr>
+<tr>
+<td style="text-align: left;">page_count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>每页的条数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+    {
+     "birthDay": 20141114,
+     "head_url": "http://mixinimage.test.upcdn.net/2018/11/10000002/1542204361/0.jpg",
+     "nick": "好汉-",
+     "sex": 1,
+     "uid": 10926,
+     "username": "18113104535",//手机号
+     "uuid": "10926"
+    }
+    ] ,
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.6、添加用户</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加用户</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/user/adduser.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">uuid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>蜜信号</td>
+</tr>
+<tr>
+<td style="text-align: left;">nick</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>昵称</td>
+</tr>
+<tr>
+<td style="text-align: left;">phone</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td style="text-align: left;">pass</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>密码，默认sha256("111111")</td>
+</tr>
+<tr>
+<td style="text-align: left;">sex</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>性别 0女1男</td>
+</tr>
+<tr>
+<td style="text-align: left;">head_url</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>头像url</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>5、黑白名单管理</h1><div style="margin-left:0px;"><h2>5.1、添加白名单</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加白名单</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/black_whitelist/add_white_user.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">phone</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td style="text-align: left;">bz</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.2、删除黑名单</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除黑名单</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/black_whitelist/delete_black_user.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">phone</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>手机号（多个手机号以英文逗号分隔）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.3、添加黑名单</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加黑名单</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/black_whitelist/add_black_user.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">phone</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td style="text-align: left;">bz</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.4、删除白名单</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除白名单</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/black_whitelist/delete_white_user.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">phone</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>手机号（多个手机号以英文逗号分隔）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功"
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>6、运营统计</h1><div style="margin-left:0px;"><h2>6.1、在线用户列表</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>在线用户列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/statistics/online_user.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+    {
+     "birthDay": 20141114,
+     "head_url": "http://mixinimage.test.upcdn.net/2018/11/10000002/1542204361/0.jpg",
+     "nick": "好汉-",
+     "sex": 1,
+     "uid": 10926,
+     "username": "18113104535",//手机号
+     "uuid": "10926"
+    }
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.2、今日活跃用户</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>今日活跃用户</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/statistics/active_user_today.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+    {
+     "birthDay": 20141114,
+     "head_url": "http://mixinimage.test.upcdn.net/2018/11/10000002/1542204361/0.jpg",
+     "nick": "好汉-",
+     "sex": 1,
+     "uid": 10926,
+     "username": "18113104535",//手机号
+     "uuid": "10926"
+    }
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.3、今日活跃群组</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>今日活跃群组</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/statistics/active_group_today.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+     {
+      "all_no_speak": 0,
+      "create_by": 10881,
+      "delete_after_reading": 0,
+      "group_id": 17,
+      "max_member": 200,
+      "need_auth": 0,
+      "protected_mode": 0,
+      "head_url": "",
+      "title": "AlphaGo(汽车美容)、AlphaGo2号(汽车美容)、几"
+    }, {
+      "all_no_speak": 0,
+      "create_by": 10881,
+      "delete_after_reading": 0,
+      "group_id": 16,
+      "max_member": 200,
+      "need_auth": 0,
+      "protected_mode": 0,
+      "head_url": "",
+      "title": "6l几"
+    },
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.4、活跃用户统计</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>活跃用户统计</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/statistics/active_user_statistics.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start_date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始日期  （yyyy-MM-dd）</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始日期  （yyyy-MM-dd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+     {
+      "date": "2019-11-03",
+      "count": 20
+    }, {
+      "date": "2019-11-04",
+      "count": 30
+    },
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.5、注册用户统计</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>注册用户统计</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/statistics/regist_user_statistics.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start_date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始日期  （yyyy-MM-dd）</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始日期  （yyyy-MM-dd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+     {
+      "date": "2019-11-03",
+      "count": 20
+    }, {
+      "date": "2019-11-04",
+      "count": 30
+    },
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.6、留存用户统计</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>留存用户统计</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/statistics/keep_user_statistics.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start_date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始日期  （yyyy-MM-dd）</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始日期  （yyyy-MM-dd）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+     {
+      "date": "2019-11-03",
+      "count": 20
+    }, {
+      "date": "2019-11-04",
+      "count": 30
+    },
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>7、系统设置</h1><div style="margin-left:0px;"><h2>7.1、默认页面</h2><div style="margin-left:0px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>获取系统信息</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>/manager/api/system/server_info.php</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "state": 1,
+    "msg": "成功",
+    "data": [
+    {
+        "id": 7,
+        "server_id": "banban",
+        "server_name": "伴伴",
+        "socket_ip": "47.103.61.96",
+        "socket_port": 6811,
+        "baseurl_http": "http:\/\/47.103.61.96\/chaoxchat\/",
+        "web_server_ip": "47.103.61.96",
+        "web_server_port": 6821,
+        "webUrl": "http:\/\/47.103.61.96\/chaoxchat\/web\/index.html"
+    }
+    ]
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div></body></html>
