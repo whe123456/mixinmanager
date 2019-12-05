@@ -1,31 +1,51 @@
 <template>
-	<div class="wrapper">
-		<div class="ms-title">密信登录</div>
-		<div class="ms-login" v-loading="loading">
-			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm">
-				<el-form-item prop="username">
-					<el-input v-model="ruleForm.username" placeholder="用户名"></el-input>
-				</el-form-item>
-				<el-form-item prop="password">
-					<el-input type="password" placeholder="密码" v-model="ruleForm.password" @keyup.enter.native="submitForm('ruleForm')"></el-input>
-				</el-form-item>
-				<div class="login-btn">
-					<el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-				</div>
-			</el-form>
+	<div>
+		<div class="wrapper" v-show="haveUrl">
+			<div @click="haveUrl=!haveUrl" class="qhServer">切换服务器</div>
+			<div class="ms-title">蜜信运维管理系统</div>
+			<div class="ms-login" v-loading="loading">
+				<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm">
+					<el-form-item prop="username">
+						<el-input v-model="ruleForm.username" placeholder="用户名"></el-input>
+					</el-form-item>
+					<el-form-item prop="password">
+						<el-input type="password" placeholder="密码" v-model="ruleForm.password" @keyup.enter.native="submitForm('ruleForm')"></el-input>
+					</el-form-item>
+					<div class="login-btn">
+						<el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+					</div>
+				</el-form>
+			</div>
+		</div>
+		<div class="wrapper" v-show="!haveUrl">
+			<div class="ms-title">选择服务器</div>
+			<div class="ms-login" v-loading="loading">
+				<el-form :model="serverForm" :rules="rules" ref="serverForm" label-width="0px" class="demo-ruleForm">
+					<el-form-item prop="server_id">
+						<el-input v-model="serverForm.server_id" placeholder="请输入服务器名称"></el-input>
+					</el-form-item>
+					<div class="login-btn">
+						<el-button type="primary" @click="submitServer('serverForm')">登录</el-button>
+					</div>
+				</el-form>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import { getLogin } from '@/api/api'
+import { getLogin,getUrl } from '@/api/api'
 export default {
 	data() {
 		return {
+			haveUrl: true,
 			loading: false,
 			ruleForm: {
 				username: '',
 				password: ''
+			},
+			serverForm: {
+				server_id: ''
 			},
 			rules: {
 				username: [
@@ -33,6 +53,9 @@ export default {
 				],
 				password: [
 					{ required: true, message: '请输入密码', trigger: 'blur' }
+				],
+				server_id: [
+					{ required: true, message: '请输入服务器名称', trigger: 'blur' }
 				]
 			}
 		}
@@ -42,7 +65,6 @@ export default {
 			const self = this
 			self.$refs[formName].validate((valid) => {
 				if (valid) {
-					console.log(self.ruleForm)
 					let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
 					getLogin({ username: self.ruleForm.username, password: sha256(self.ruleForm.password) }).then(response => {
 						if(response.data.state === '1') {
@@ -55,12 +77,38 @@ export default {
 					return false
 				}
 			})
+		},
+		submitServer(formName) {
+			const self = this
+			self.$refs[formName].validate((valid) => {
+				if (valid) {
+					getUrl(self.serverForm).then(response => {
+						console.log(response)
+						if(response.data.state === '1') {
+							localStorage.setItem('baseURL',response.data.config.baseurl_http)
+							localStorage.setItem('serverId',self.serverForm.server_id)
+							setTimeout(function() {
+								self.$router.go(0)
+							},1)
+						}
+					})
+				} else {
+					console.log('error submit!!')
+					return false
+				}
+			})
+		}
+	},
+	mounted(){
+		const baseURL = localStorage.getItem('baseURL')
+		if (baseURL === null) {
+			this.haveUrl = false
 		}
 	}
 }
 </script>
 <style lang="scss" scoped>
-	.server{
+	.qhServer{
 		position: fixed;
 		top: 10px;
 		right: 20px;
@@ -75,7 +123,7 @@ export default {
 	}
 	.ms-login{
 		width:300px;
-		height:160px;
+		/*height:160px;*/
 		padding:40px;
 		border-radius: 5px;
 		background: #fff;

@@ -50,6 +50,10 @@
 					label="创建者">
 				</el-table-column>
 				<el-table-column
+						prop="create_time"
+						label="创建时间">
+				</el-table-column>
+				<el-table-column
 					prop="all_no_speak"
 					label="全体禁言">
 					<template slot-scope="scope">

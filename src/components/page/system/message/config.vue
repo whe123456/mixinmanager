@@ -1,10 +1,7 @@
 <template>
-	<el-form label-width="100px" :model="tableData">
-		<el-form-item label="服务器id">
-			<el-input v-model="tableData.server_id" :disabled="true"></el-input>
-		</el-form-item>
-		<el-form-item label="服务器名称">
-			<el-input v-model="tableData.server_name" :disabled="true"></el-input>
+	<el-form label-width="100px">
+		<el-form-item v-for="item in tableData" :key="item.value" :label="item.name">
+			<el-input v-model="item.value" :disabled="true"></el-input>
 		</el-form-item>
 	</el-form>
 </template>
@@ -14,14 +11,16 @@
 	export default {
 		data() {
 			return {
-				tableData: {},
+				tableData: [],
 				loading: false
 			}
 		},
 		mounted() {
 			const that = this
 			that.loading = true
-			serverInfo().then(response => {
+
+			const serverId = localStorage.getItem('serverId')
+			serverInfo({server_id: serverId}).then(response => {
 				console.log(response)
 				that.loading = false
 				if(response.data.state === '1') {

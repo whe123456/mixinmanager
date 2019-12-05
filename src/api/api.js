@@ -160,3 +160,12 @@ export function serverInfo(query = {}) {
 		data: query
 	})
 }
+
+
+export function getUrl(query = {}) {
+	return request({
+		url: 'http://api.oyxin.cn/chaoxchat/api/server_config.php',
+		method: 'post',
+		data: query
+	})
+}

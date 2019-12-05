@@ -1,7 +1,8 @@
 import axios from 'axios'
 import vm from '@/main'
 import qs from 'qs'
-const baseURL = sessionStorage.getItem('baseURL')
+const baseURL = localStorage.getItem('baseURL')
+console.log('baseUrl', baseURL)
 //create an axios instance
 const service = axios.create({
 	baseURL: baseURL, //api 的 base_url

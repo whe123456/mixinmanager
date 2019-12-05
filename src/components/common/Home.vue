@@ -4,11 +4,10 @@
             <div class="headerTop">
                 <div class="logo">后台管理系统</div>
                 <div class="user-info">
-			<span class="el-dropdown-link" @click="changePass">
-			{{userName}}
-			</span>
-                    <span command="loginout" @click="handleCommand">退出</span>
-                </div>
+                <span class="el-dropdown-link">{{userName}}</span>
+                <span @click="changePass"><img src="../../assets/changePass.png"/>修改密码</span>
+                <span @click="handleCommand"><img src="../../assets/loginOut.png"/>退出</span>
+            </div>
             </div>
             <div class="headerMenu">
                 <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
@@ -102,7 +101,7 @@
 						text: '系统设置',
 						child: [{
 							path: '/system/message',
-							text: '短信配置'
+							text: '服务器'
 						}
 						]
 					}]
@@ -149,11 +148,10 @@
         width: auto;
         padding: 20px 70px;
         box-sizing: border-box;
-        overflow-y: scroll;
     }
 
     .el-menu {
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     .el-table th, .el-table td {
@@ -204,6 +202,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            img{
+                width: 20px;
+            }
         }
         .headerMenu {
             padding: 0 50px;
@@ -221,16 +222,16 @@
         padding-right: 50px;
         font-size: 16px;
         color: #fff;
-    }
-
-    .user-info span {
-        position: relative;
-        display: inline-block;
-        padding-left: 50px;
-        color: #fff;
-        cursor: pointer;
-        vertical-align: middle;
-        font-size: 14px;
+        display: flex;
+        span {
+            display: flex;
+            justify-content: center;
+            padding-left: 50px;
+            color: #fff;
+            cursor: pointer;
+            align-items: center;
+            font-size: 14px;
+        }
     }
 
     .user-info .user-logo {
