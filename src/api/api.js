@@ -43,6 +43,20 @@ export function deleteUser(query = {}) {
 		data: query
 	})
 }
+export function addUserCredits(query = {}) {
+	return request({
+		url: '/manager/api/user/addUserCredits.php',
+		method: 'post',
+		data: query
+	})
+}
+export function resetUser(query = {}) {
+	return request({
+		url: '/manager/api/user/resetUserPass.php',
+		method: 'post',
+		data: query
+	})
+}
 
 export function deleteGroup(query = {}) {
 	return request({

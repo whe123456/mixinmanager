@@ -25,16 +25,24 @@
 			<el-table
 				:data="tableData"
 				stripe
+				border
 				v-loading="loading"
 				@selection-change="handleSelectionChange"
 				style="width: 100%;">
 				<el-table-column
 					type="selection"
+					fixed
 					width="55">
 				</el-table-column>
 				<el-table-column
 					prop="uid"
-					label="用户id">
+					label="用户id"
+					width="85">
+				</el-table-column>
+				<el-table-column
+						prop="uuid"
+						label="密信号"
+						width="150">
 				</el-table-column>
 				<el-table-column
 					prop="nick"
@@ -53,27 +61,37 @@
 				</el-table-column>
 				<el-table-column
 					prop="sex"
-					label="性别">
+					label="性别"
+					width="60">
 					<template slot-scope="scope">
 						{{scope.row.sex===1?'男':'女'}}
 					</template>
 				</el-table-column>
 				<el-table-column
 					prop="username"
-					label="手机号">
+					label="手机号"
+					width="150">
 				</el-table-column>
 				<el-table-column
-						prop="create_time"
-						label="创建时间">
+					prop="create_time"
+					label="创建时间"
+					width="200">
 				</el-table-column>
-				<!--<el-table-column
+				<el-table-column
+						prop="total"
+						label="蜜币"
+						width="100">
+				</el-table-column>
+				<el-table-column
 					prop="username"
-					label="操作">
+					label="操作"
+					width="200">
 					<template slot-scope="scope">
-						&lt;!&ndash;<el-button type="primary" icon="el-icon-edit" circle></el-button>&ndash;&gt;
-						<el-button type="danger" icon="el-icon-delete" circle @click="del(scope.row.uid)"></el-button>
+						<el-button type="primary" size="small" @click="reset(scope.row.uid)">重置密码</el-button>
+						<el-button type="primary" size="small" @click="set(scope.row.uid)">蜜币管理</el-button>
+						<!--<el-button type="danger" icon="el-icon-delete" circle @click="del(scope.row.uid)"></el-button>-->
 					</template>
-				</el-table-column>-->
+				</el-table-column>
 			</el-table>
 			<el-pagination
 				@current-change="handleCurrentChange"
@@ -89,7 +107,7 @@
 </template>
 
 <script>
-import { deleteUser,userList } from '@/api/api'
+import { deleteUser,resetUser,userList,addUserCredits } from '@/api/api'
 export default {
 	data() {
 		return {
@@ -115,6 +133,67 @@ export default {
 			this.idList = e.map((e) => {
 				return e.uid
 			}).join(',')
+		},
+		set(e) {
+			let uid = e
+			const that = this
+			this.$prompt('请输入要增加或减少的蜜币（正数为增加，负数为减少，两位小数）', '蜜币管理', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+			}).then(({ value }) => {
+				const add=value.includes('+')
+				const del=value.includes('-')
+				let str=''
+				let msg=''
+				if(del){
+					msg='管理员扣除'
+					str='-'
+				}
+				if(add){
+					msg='管理员增加'
+					str='+'
+				}
+				value=parseFloat(value)
+				const amount=str+value.toFixed(2)
+				that.loading = true
+				addUserCredits({ uid: uid,amount:amount,msg:msg }).then(response => {
+					that.loading = false
+					if(response.data.state === '1') {
+						that.$message({
+							type: 'success',
+							message: '修改成功!'
+						})
+						that.getList(1)
+					}
+				})
+			})
+		},
+		reset(e,type=1) {
+			let uid = e
+			let msg = '是否重置该用户密码?'
+			/*if(type!==1){
+				uid = this.idList
+				msg = '是否重置所选用户密码?'
+			}*/
+			console.log(e)
+			const that = this
+			this.$confirm(msg, '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'warning'
+			}).then(() => {
+				that.loading = true
+				resetUser({ uid: uid }).then(response => {
+					that.loading = false
+					if(response.data.state === '1') {
+						that.$message({
+							type: 'success',
+							message: '重置成功，密码为111111!'
+						})
+						that.getList(1)
+					}
+				})
+			})
 		},
 		del(e,type=1) {
 			let uid = e

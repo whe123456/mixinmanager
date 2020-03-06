@@ -5,6 +5,9 @@
             <el-form-item label="密信号" prop="uuid">
                 <el-input v-model="ruleForm.uuid"></el-input>
             </el-form-item>
+            <el-form-item label="密码" prop="passWord">
+                <el-input v-model="ruleForm.passWord"></el-input>
+            </el-form-item>
             <el-form-item label="昵称" prop="nick">
                 <el-input v-model="ruleForm.nick"></el-input>
             </el-form-item>
@@ -53,11 +56,15 @@
 					nick: '',
 					phone: '',
 					sex: 1,
-					head_url: ''
+					head_url: '',
+					passWord: ''
 				},
 				rules: {
 					uuid: [
 						{required: true, message: '请输入密信号', trigger: 'blur'}
+					],
+					passWord: [
+						{required: true, message: '请输入密信密码', trigger: 'blur'}
 					]
 				}
 			}
@@ -76,6 +83,8 @@
 				self.$refs[formName].validate((valid) => {
 					if (valid) {
 						console.log(self.ruleForm)
+						let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
+						self.ruleForm.pass=sha256(self.ruleForm.passWord)
 						addUser(self.ruleForm).then(response => {
 							if (response.data.state === '1') {
 								self.$message('添加成功')
@@ -84,7 +93,8 @@
 									nick: '',
 									phone: '',
 									sex: 1,
-									head_url: ''
+									head_url: '',
+									passWord: ''
                                 }
 							}
 						})

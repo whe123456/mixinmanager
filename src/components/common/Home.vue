@@ -13,12 +13,15 @@
                 <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
                          background-color="#242f42" text-color="#fff" active-text-color="#ffd04b">
                     <template v-for="item in options">
-                        <template v-if="item.child">
+                        <template v-if="item.url">
+                            <el-menu-item :index="item.path" :key="item.path">
+                                <i :class="item.icon"></i>{{ item.text }}
+                            </el-menu-item>
+                        </template>
+                        <template v-else-if="item.child">
                             <el-submenu :index="item.path" :key="item.path">
                                 <template slot="title"><i :class="item.icon"></i>{{ item.text }}</template>
-                                <el-menu-item v-for="(subItem,i) in item.child" :key="i" :index="subItem.path">{{
-                                    subItem.text }}
-                                </el-menu-item>
+                                <el-menu-item v-for="(subItem,i) in item.child" :key="i" :index="subItem.path">{{ subItem.text }}</el-menu-item>
                             </el-submenu>
                         </template>
                         <template v-else>
@@ -104,11 +107,19 @@
 							text: '服务器'
 						}
 						]
+					},
+					{
+						path: 'openApi',
+						text: '开放接口'
 					}]
 			}
 		},
 		methods: {
 			handleSelect(key) {
+				if (key=== 'openApi') {
+					window.open('http://api.oyxin.cn/chaoxchat/api/open_api.php?s_id=' + localStorage.getItem('serverId'))
+                    return
+                }
 				this.$router.push(key)
 			},
 			handleCommand() {
@@ -132,7 +143,6 @@
 				this.$router.push('/Login')
 				return false
 			}
-			console.log(this.$route.path)
 			this.userName = JSON.parse(user).name
 			this.activeIndex = this.$route.path
 			if (this.$route.path === '/') {
