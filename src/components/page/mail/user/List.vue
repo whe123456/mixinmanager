@@ -143,17 +143,18 @@ export default {
 			}).then(({ value }) => {
 				const add=value.includes('+')
 				const del=value.includes('-')
-				let str=''
-				let msg=''
+				let msg='管理员增加'
+				let str='+'
 				if(del){
 					msg='管理员扣除'
-					str='-'
+					str=''
 				}
 				if(add){
 					msg='管理员增加'
 					str='+'
 				}
 				value=parseFloat(value)
+				console.log(str,value)
 				const amount=str+value.toFixed(2)
 				that.loading = true
 				addUserCredits({ uid: uid,amount:amount,msg:msg }).then(response => {
